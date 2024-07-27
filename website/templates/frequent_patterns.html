@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Frequent Patterns</title>
+</head>
+<body>
+    <h1>Frequent Patterns</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Antecedents</th>
+                <th>Consequents</th>
+                <th>Support</th>
+                <th>Confidence</th>
+                <th>Lift</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for rule in rules.iterrows() %}
+                <tr>
+                    <td>{{ rule[1]['antecedents'] }}</td>
+                    <td>{{ rule[1]['consequents'] }}</td>
+                    <td>{{ rule[1]['support'] }}</td>
+                    <td>{{ rule[1]['confidence'] }}</td>
+                    <td>{{ rule[1]['lift'] }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

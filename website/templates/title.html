@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>Health Quotient</title>
+  </head>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Quicksand&family=Raleway:wght@200;300;400;600;700&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    font-family: 'Quicksand', sans-serif;
+    font-family: 'Raleway', sans-serif;
+    list-style: none;
+    text-decoration: none;
+    scroll-behavior: smooth;
+}
+
+
+header{
+    position: fixed;
+    width: 100%;
+    right: 0;
+    top: 0;
+    display: flex;
+    align-items:left;
+    justify-content: space-between;
+    z-index: 111;
+    padding: 20px 320px;
+    background:linear-gradient(rgb(0, 153, 0),rgb(0, 153, 0),rgb(0, 153, 0));
+     ;
+    box-shadow: rgba(104, 226, 192, 0.1) 0px 10px 10px -10px;
+    
+}
+
+.logo{
+    font-size: 2.4rem;
+    color: #64a200;
+}
+    .navlist{
+display: flex;
+}
+.navlist a {
+    color: #04a44c;
+    font-size: 1.2rem;
+    font-weight: 400;
+    padding: 15px 20px;
+    transition: color .3s;
+    text-decoration: none !important; /* Add this line to remove underline */
+}
+
+h1{
+    margin-left: -200px;
+    color: #ffffff;
+    font-size: 3.4rem;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+     background-image: linear-gradient(90deg, #ffffff , #ffffff );
+    
+    color: white;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    margin-left: 55px; 
+    transition: background-color 0.3s ease-in-out;
+  }
+  .button:hover {
+    /* Keep the same background image */
+    background-image: linear-gradient(90deg, #64a200 0%, #0fdf6d 100%);
+    /* Change the text color on hover */
+    color:rgb(172, 227, 237); /* Change this to the desired text color */
+}
+
+#menu-icon{
+font-size: 3rem;
+cursor: pointer;
+display: none;
+}
+section{
+padding: 85px 17%;
+}
+body {
+    background-image: url('medical.png');
+    background-size: cover; /* You can adjust this property to control how the image covers the background */
+    background-repeat: no-repeat; /* Prevent the background image from repeating */
+    background-attachment: fixed;
+}
+
+
+</style>
+  <body>
+    <header>
+        
+        <h1>Health Quotient </h1>
+        <div class="bx bx-menu" id="menu-icon"><i class="uil uil-list-ul"></i></div>
+        <ul class="navlist">
+            
+           
+    
+        </ul>
+    </header>
+    
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    -->
+  </body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Entry</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+</head>
+<br><br><br><br>
+<body>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col">
+                <h2 class="mb-3">Add Meal</h2>
+                <form method="POST" action="{{ url_for('views.add_meal') }}">
+                  <div class="mb-3">
+                        <label for="inputmeal" class="form-label">Meal Name</label>
+                        <select class="form-select" id="inputmeal" name="inputmeal" required>
+                            <option value="Aam Panna">Aam Panna</option>
+                            <option value="Almonds">Almonds</option>
+    <option value="Aloe Vera Juice">Aloe Vera Juice</option>
+    <option value="Amul Cheese">Amul Cheese</option>
+    <option value="Aloo tikka">Aloo tikka</option>
+    <option value="Apple">Apple</option>
+    <option value="Bajji">Bajji</option>
+    <option value="Banana">Banana</option>
+    <option value="Barley">Barley</option>
+    <option value="Barley Flour">Barley Flour</option>
+    <option value="Beans">Beans</option>
+    <option value="Beef">Beef</option>
+    <option value="Beet root">Beet root</option>
+    <option value="Biryani">Biryani</option>
+    <option value="Biscuits">Biscuits</option>
+    <option value="Blackberry">Blackberry</option>
+    <option value="Bombay Duck">Bombay Duck</option>
+    <option value="Bottle Gourd">Bottle Gourd</option>
+    <option value="Brussels Sprouts">Brussels Sprouts</option>
+    <option value="Buffalo">Buffalo</option>
+    <option value="Burger">Burger</option>
+    <option value="Buttermilk">Buttermilk</option>
+    <option value="Cabbage">Cabbage</option>
+    <option value="Cakes">Cakes</option>
+    <option value="Carrots">Carrots</option>
+    <option value="Cashews">Cashews</option>
+    <option value="Cauliflower">Cauliflower</option>
+    <option value="Celery">Celery</option>
+    <option value="chat">chat</option>
+    <option value="Cheese">Cheese</option>
+    <option value="Cham Cham">Cham Cham</option>
+    <option value="Chana Dal">Chana Dal</option>
+    <option value="Cherries">Cherries</option>
+    <option value="Chicken">Chicken</option>
+    <option value="Chocolates">Chocolates</option>
+    <option value="Coconut Flour">Coconut Flour</option>
+    <option value="Coconut Water">Coconut Water</option>
+    <option value="Corn">Corn</option>
+    <option value="Cucumbers">Cucumbers</option>
+    <option value="Curd (Yogurt)">Curd (Yogurt)</option>
+    <option value="Custard Apple">Custard Apple</option>
+    <option value="Dahi">Dahi</option>
+    <option value="Dal Atta">Dal Atta</option>
+    <option value="Dosa">Dosa</option>
+    <option value="Dragon Fruit">Dragon Fruit</option>
+    <option value="Drumstick">Drumstick</option>
+    <option value="Egg plant">Egg plant</option>
+    <option value="Eggs">Eggs</option>
+    <option value="Falooda">Falooda</option>
+    <option value="Fenugreek (Methi)">Fenugreek (Methi)</option>
+    <option value="Filter Coffee">Filter Coffee</option>
+    <option value="Fish">Fish</option>
+    <option value="French fries">French fries</option>
+    <option value="Fried rice">Fried rice</option>
+    <option value="Ghee">Ghee</option>
+    <option value="Ginger">Ginger</option>
+    <option value="Goose">Goose</option>
+    <option value="Gooseberry (Amla)">Gooseberry (Amla)</option>
+    <option value="Grapes">Grapes</option>
+    <option value="Green Beans">Green Beans</option>
+    <option value="Green Chilies">Green Chilies</option>
+    <option value="Guava">Guava</option>
+    <option value="Guava Juice">Guava Juice</option>
+    <option value="Gulab Jamun">Gulab Jamun</option>
+    <option value="Halwa">Halwa</option>
+    <option value="Hazelnuts">Hazelnuts</option>
+    <option value="Idli">Idli</option>
+    <option value="Indian Plum (Jamun)">Indian Plum (Jamun)</option>
+    <option value="Indian Red Chili Peppers">Indian Red Chili Peppers</option>
+    <option value="Jalebi">Jalebi</option>
+    <option value="Kaju Katli">Kaju Katli</option>
+    <option value="Kanji">Kanji</option>
+    <option value="Kesar Pista Milkshake">Kesar Pista Milkshake</option>
+    <option value="Kheer">Kheer</option>
+    <option value="Kiwi">Kiwi</option>
+    <option value="Kulfi">Kulfi</option>
+    <option value="Laddu">Laddu</option>
+    <option value="Lady finger">Lady finger</option>
+    <option value="Lassi">Lassi</option>
+    <option value="Lemonade">Lemonade</option>
+    <option value="Litchi">Litchi</option>
+    <option value="Lotus Stem (Kamal Kakdi)">Lotus Stem (Kamal Kakdi)</option>
+    <option value="Makhan (White Butter)">Makhan (White Butter)</option>
+    <option value="Malai">Malai</option>
+    <option value="Mango">Mango</option>
+    <option value="Masala Chai">Masala Chai</option>
+    <option value="Millet">Millet</option>
+    <option value="Mint">Mint</option>
+    <option value="Mulberries">Mulberries</option>
+    <option value="Mushrooms">Mushrooms</option>
+    <option value="Mysore Pak">Mysore Pak</option>
+    <option value="Noodles">Noodles</option>
+    <option value="Oat Flour">Oat Flour</option>
+    <option value="Oats">Oats</option>
+    <option value="Ostrich">Ostrich</option>
+    <option value="Papaya">Papaya</option>
+    <option value="Pani puri">Pani puri</option>
+    <option value="Pasta">Pasta</option>
+    <option value="Pav bhaji">Pav bhaji</option>
+    <option value="Peas">Peas</option>
+    <option value="Pecans">Pecans</option>
+    <option value="Peppers">Peppers</option>
+    <option value="Pineapple">Pineapple</option>
+    <option value="Pista">Pista</option>
+    <option value="Pizza">Pizza</option>
+    <option value="Poha">Poha</option>
+    <option value="Pomegranate">Pomegranate</option>
+    <option value="Potatoes">Potatoes</option>
+    <option value="Prawn">Prawn</option>
+    <option value="Pulihora">Pulihora</option>
+    <option value="Pumpkin">Pumpkin</option>
+    <option value="Pumpkin Seeds">Pumpkin Seeds</option>
+    <option value="Rabbit">Rabbit</option>
+    <option value="Radishes">Radishes</option>
+    <option value="Ragi">Ragi</option>
+    <option value="Ragi Flour">Ragi Flour</option>
+    <option value="Ras Malai">Ras Malai</option>
+    <option value="Rasgulla">Rasgulla</option>
+    <option value="Rice">Rice</option>
+    <option value="Rice Flour">Rice Flour</option>
+    <option value="Ridge Gourd">Ridge Gourd</option>
+    <option value="Rose Milk">Rose Milk</option>
+    <option value="Samosas">Samosas</option>
+    <option value="Sapota">Sapota</option>
+    <option value="Sesame Seeds">Sesame Seeds</option>
+    <option value="Snake Gourd">Snake Gourd</option>
+    <option value="Soya Flour">Soya Flour</option>
+    <option value="Spinach">Spinach</option>
+    <option value="Squid">Squid</option>
+    <option value="Starfruit (Carambola)">Starfruit (Carambola)</option>
+    <option value="Strawberry">Strawberry</option>
+    <option value="Sugar Cane Juice">Sugar Cane Juice</option>
+    <option value="Sweet Lime">Sweet Lime</option>
+    <option value="Sweet Potatoes">Sweet Potatoes</option>
+    <option value="Tacos">Tacos</option>
+    <option value="Tamarind">Tamarind</option>
+    <option value="Tomatoes">Tomatoes</option>
+    <option value="Turnips">Turnips</option>
+    <option value="Turmeric">Turmeric</option>
+    <option value="Turkey">Turkey</option>
+    <option value="Upma">Upma</option>
+    <option value="Vada pav">Vada pav</option>
+    <option value="Watermelon">Watermelon</option>
+    <option value="Wheat">Wheat</option>
+    <option value="Wheat Flour">Wheat Flour</option>
+    <option value="Walnuts">Walnuts</option>
+    <option value="Yam (Suran)">Yam (Suran)</option>
+    <option value="Yogurt (Curd)">Yogurt (Curd)</option>
+
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputDate" class="form-label">Date</label>
+                        <input type="date" class="form-control" id="inputDate" name="inputDate" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputTime" class="form-label">Time</label>
+                        <input type="time" class="form-control" id="inputTime" name="inputTime" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="background-color: rgb(0, 153, 0);">Add Meal</button>
+                </form>
+            </div>
+            <div class="col">
+                <h2 class="mb-3">Add Symptom</h2>
+                <form method="POST" action="{{ url_for('views.add_symptom') }}">
+                  <div class="mb-3">
+                        <label for="inputsymptom" class="form-label">Symptom</label>
+                        <select class="form-select" id="inputsymptom" name="inputsymptom" required>
+                            <option value="Fatigue">Fatigue</option>
+                            <!-- Add more options here -->
+                            <option value="Dizziness">Dizziness</option>
+    <option value="Headache">Headache</option>
+    <option value="Itchiness">Itchiness</option>
+    <option value="Swelling">Swelling</option>
+    <option value="Dermatitis">Dermatitis</option>
+    <option value="Abdominal Pain">Abdominal Pain</option>
+    <option value="Nausea">Nausea</option>
+    <option value="Indigestion">Indigestion</option>
+    <option value="Constipation">Constipation</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputdate" class="form-label">Date</label>
+                        <input type="date" class="form-control" id="inputdate" name="inputdate" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputtime" class="form-label">Time</label>
+                        <input type="time" class="form-control" id="inputtime" name="inputtime" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="background-color: rgb(0, 153, 0)">Add Symptom</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <a href="{{ url_for('views.frequent_patterns') }}" class="btn btn-primary" style="background-color: rgb(0, 153, 0);">View Patterns</a>
+
+</body>
+</html>

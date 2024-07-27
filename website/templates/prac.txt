@@ -1,0 +1,67 @@
+<option value="Aam Panna">Aam Panna</option>
+    
+
+    <option value="Fatigue">Fatigue</option>
+    
+    def create_rules(item_sets, filter_list, symptom_name):
+    try:
+        te = TransactionEncoder()
+
+        # Filter out unrelated symptoms from itemsets
+        filtered_items = [filter_symptoms(i, filter_list) for i in item_sets]
+
+        # Create itemset data for fpgrowth
+        te_items = te.fit(filtered_items).transform(filtered_items)
+        items_df = pd.DataFrame(te_items, columns=te.columns_)
+
+        # Run data through fpgrowth and get association rules
+        freq_itemsets = fpgrowth(items_df, min_support=0.1, use_colnames=True)
+        rules = association_rules(freq_itemsets, metric="lift", min_threshold=1.0).sort_values(by=["lift"], ascending=False)
+
+        # Get lift, consequents, and antecedents
+        data = list(zip(
+            convert_frozenset(rules["antecedents"]),
+            convert_frozenset(rules["consequents"]),
+            list(rules["lift"])
+        ))
+
+        # Return the top 10 (or less) symptom data, filtering out the symptom from the antecedent, consequent columns
+        return list(map(
+            lambda row: [row[0], row[2]],
+            list(filter(lambda col: col[1] == symptom_name, data))
+        ))[:10]
+
+    except Exception as e:
+        print("Error in create_rules:", str(e))
+        return []
+
+# Filters out unrelated symptoms
+def filter_symptoms(items, symptom_list):
+    return list(set(filter(lambda item: item != symptom_list, items)))
+
+# Convert frozenset, drop non-unique values, and filter out the symptom values
+def convert_frozenset(fset, filter_val=None):
+    return list(filter(lambda i: i != filter_val, fset.apply(lambda x: list(x)[0]).astype("unicode").tolist()))
+
+
+
+
+    def retrieve_meals_and_symptom_counts(username):
+    meals = db.session.query(Meal).filter_by(username=username).all()
+    symptom_counts = db.session.query(
+        Symptom.symptom,
+        db.func.count(Symptom.symptom).label('count')
+    ).filter_by(username=username).group_by(Symptom.symptom).all()
+    return meals, symptom_counts
+
+
+
+    from mlxtend.preprocessing import TransactionEncoder
+    te = TransactionEncoder()
+    te_ary = te.fit(df[['meal_name', 'symptom_name']]).transform(df[['meal_name', 'symptom_name']])
+    df_encoded = pd.DataFrame(te_ary, columns=te.columns_)
+
+    frequent_items = fpgrowth(df_encoded, min_support=0.1, use_colnames=True)
+    rules = association_rules(frequent_items, metric='lift', min_threshold=1)
+
+    return render_template('frequent_patterns.html', rules=rules)
